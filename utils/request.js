@@ -136,6 +136,7 @@ function fetchRequestAll(data) {
     })
   })
 }
+
 function checkRequest(key) {
   return REQUEST_CACHE.indexOf(key) >= 0;
 }
