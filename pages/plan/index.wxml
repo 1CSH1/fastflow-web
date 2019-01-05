@@ -6,7 +6,7 @@
   </view>
 
   <view class="{{displayCalendar?'view-calendar-show':'view-calendar-hide'}}"
-  style="display: {{displayCalendar}};position: fixed;width: 50%;height: 50%;top: 50px;left: 0px;z-index:999;background-color:rgba(0,0,0,0.5);"
+  
   > </view>
 
   <view>周目标</view>

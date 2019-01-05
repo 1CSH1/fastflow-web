@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    displayCalendar: true
+    // 是否显示日历
+    displayCalendar: false
   },
 
   /**
@@ -70,8 +71,7 @@ Page({
   showCalendar: function () {
     var that = this;
     that.setData({
-      displayCalendar: (!that.data.displayCalendar)
+      displayCalendar: !that.data.displayCalendar
     })
-    console.log(this.data.displayCalendar);
   }
 })
