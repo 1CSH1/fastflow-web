@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    displayCalendar: true
   },
 
   /**
@@ -62,5 +62,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  /**
+   * 展示隐藏日期控件 
+   */
+  showCalendar: function () {
+    var that = this;
+    that.setData({
+      displayCalendar: (!that.data.displayCalendar)
+    })
+    console.log(this.data.displayCalendar);
   }
 })

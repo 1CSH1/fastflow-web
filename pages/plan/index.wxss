@@ -1,1 +1,20 @@
 /* pages/plan/index.wxss */
+
+page {
+
+}
+
+.image-calendar {
+  width: 50rpx;
+  height: 50rpx;
+  display: block;
+  margin-left: 20rpx;
+}
+
+.view-calendar-show {
+  display: block
+}
+
+.view-calendar-hide {
+  display: none
+}
