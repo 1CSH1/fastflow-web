@@ -3,7 +3,8 @@
   <view bindtap="preMonth">
     <image class="select_icon" src="../../assets/images/left.png"></image>
   </view>
-  <view class="text_center">{{curYear+'-'+curMonth}}</view>
+  <view wx:if="{{curMonth > 9}}" class="text_center">{{curYear + ' - ' + curMonth}}</view>
+  <view wx:else class="text_center">{{curYear + ' - 0' + curMonth}}</view>
   <view style="text-align:right;" bindtap="nextMonth">
     <image class="select_icon" src="../../assets/images/right.png"></image>
   </view>

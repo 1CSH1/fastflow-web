@@ -12,17 +12,11 @@ page {
 }
 
 .view-calendar-show {
-  display: flex;
   position: fixed;
   width: 100%;
-  height: 50%;
-  /* top: 50px; */
-  /* left: 0px; */
   justify-content: center;
   align-items: center;
-  /* z-index:999; */
-  background-color:rgba(0,0,0,0.5);
-}
+} 
 
 .view-calendar-hide {
   display: none

@@ -69,9 +69,9 @@ Page({
    * 展示隐藏日期控件 
    */
   showCalendar: function () {
-    var that = this;
-    that.setData({
-      displayCalendar: !that.data.displayCalendar
+    var _this = this;
+    _this.setData({
+      displayCalendar: !_this.data.displayCalendar
     })
   }
 })

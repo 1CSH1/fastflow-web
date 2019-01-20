@@ -5,9 +5,7 @@
   <image class='image-calendar' src='../../assets/images/icon-calendar.png' bindtap='showCalendar'></image>
   </view>
 
-  <view class="{{displayCalendar?'view-calendar-show':'view-calendar-hide'}}"
-  
-  > </view>
+  <calendar class="{{displayCalendar?'view-calendar-show':'view-calendar-hide'}}"></calendar>
 
   <view>周目标</view>
   <view>日计划</view>
