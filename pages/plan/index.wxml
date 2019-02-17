@@ -7,9 +7,52 @@
 
   <calendar class="{{displayCalendar?'view-calendar-show':'view-calendar-hide'}}"></calendar>
 
-  <view>周目标</view>
-  <view>日计划</view>
+  <!-- 周目标 -->
+  <view class="todo-list">
+    <view class="todo-header">
+      {{thisWeekGoalTitle}}
+    </view>
+    <view
+      wx:for="{{ thisWeekGoalList }}"
+      wx:key="{{ index }}"
+      wx:if="{{ item.state == 0 }}"
+      class="todo-list__item ripple fast fadeInRight"
+      style="animation-delay: {{ delay ? index * 0.1 : 0 }}s">
+      <item
+        class="todo-item"
+        todo="{{ item }}"
+        data-index="{{ index }}"
+        bindchange="handleTodoItemChange"
+        bindlongtap="handleTodoLongTap">
+      </item>
+    </view>
+    <!-- <view class="ripple bounceIn" wx:if="{{!uncompletedCount}}">
+      <tips-info text="太棒了，你的任务已全部完成啦！">
+      </tips-info>
+    </view> -->
+  </view>
 
-  
+  <!-- 日任务 -->
+  <view class="todo-list">
+    <view class="todo-header">
+      {{thisDayTaskTitle}}
+    </view>
+    <view
+      wx:for="{{ todos }}"
+      wx:key="{{ index }}"
+      wx:if="{{ item.completed }}"
+      class="todo-list__item ripple fast fadeInRight"
+      style="animation-delay: {{ delay ? index * 0.1 : 0 }}s">
+      <todo-item
+        class="todo-item"
+        todo="{{ item }}"
+        data-index="{{ index }}"
+        bindchange="handleTodoItemChange"
+        bindlongtap="handleTodoLongTap">
+      </todo-item>
+    </view>
+  </view>
 
+  <!-- 添加按钮 -->
+  <view class="todo-add" bindtap="handleAddTodo">+</view>
 </view>

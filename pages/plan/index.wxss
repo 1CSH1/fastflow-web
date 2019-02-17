@@ -1,7 +1,7 @@
 /* pages/plan/index.wxss */
 
 page {
-
+  
 }
 
 .image-calendar {
@@ -20,4 +20,59 @@ page {
 
 .view-calendar-hide {
   display: none
+}
+/* 
+.week-goal {
+  width: calc(100% - 5rpx * 2 - 5rpx * 2);
+  /* height: calc(100% - 5rpx * 2 - 5rpx * 2); */
+  /* height: 300rpx;
+  display: flex;
+  margin: 5rpx;
+  padding: 5rpx;
+  flex-direction: column;
+  border: 1px solid;
+}
+
+.week-goal-title {
+  text-align: center
+} */ 
+
+/* 
+.day-plan {
+  width: calc(100% - 5rpx * 2 - 5rpx * 2);
+  height: 100%;
+  display: flex;
+  margin: 5rpx;
+  padding: 5rpx;
+  flex-direction: column;
+  border: 1px solid
+} */
+
+.todo-header {
+  background: #F5F8FF;
+  display: block;
+  font-size: 28rpx;
+  padding: 12rpx 30rpx;
+  color: #9198AB;
+  text-align: center
+}
+
+.todo-list {
+  background: #fff;
+}
+
+.todo-add {
+  position: fixed;
+  left: 50%;
+  bottom: 60rpx;
+  width: 90rpx;
+  height: 90rpx;
+  margin-left: -45rpx;
+  border-radius: 50%;
+  font-size: 60rpx;
+  line-height: 90rpx;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  color: #444;
 }

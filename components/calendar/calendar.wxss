@@ -17,7 +17,7 @@
 
 .calendar_box {
   width: 100%;
-  background: #fff;
+  /* background: #fff; */
   overflow: hidden;
   border-bottom: 1rpx solid #ececec;
 }
