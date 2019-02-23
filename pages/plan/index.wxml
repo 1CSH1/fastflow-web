@@ -12,10 +12,27 @@
     <view class="todo-header">
       {{thisWeekGoalTitle}}
     </view>
+    <!-- 未完成的周目标 -->
     <view
       wx:for="{{ thisWeekGoalList }}"
       wx:key="{{ index }}"
-      wx:if="{{ item.state != 2}}"
+      wx:if="{{ item.state == 0}}"
+      class="todo-list__item ripple fast fadeInRight"
+      style="animation-delay: {{ delay ? index * 0.1 : 0 }}s">
+      <item
+        class="todo-item"
+        todo="{{ item }}"
+        data-index="{{ index }}"
+        data-id="{{ item.id }}"
+        bindchange="handleTodoItemChange"
+        bindlongtap="weeklyLongTap">
+      </item>
+    </view>
+    <!-- 已完成的周目标 -->
+    <view
+      wx:for="{{ thisWeekGoalList }}"
+      wx:key="{{ index }}"
+      wx:if="{{ item.state == 1}}"
       class="todo-list__item ripple fast fadeInRight"
       style="animation-delay: {{ delay ? index * 0.1 : 0 }}s">
       <item
