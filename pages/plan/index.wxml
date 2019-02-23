@@ -22,6 +22,7 @@
         class="todo-item"
         todo="{{ item }}"
         data-index="{{ index }}"
+        data-id="{{ item.id }}"
         bindchange="handleTodoItemChange"
         bindlongtap="weeklyLongTap">
       </item>

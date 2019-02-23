@@ -74,17 +74,19 @@ Page({
 
       for (let i = 0; i < jsonData.length; i++){
         let weeklyGoal = jsonData[i];
-        weeklyGoals = weeklyGoals.concat([
-          new WeeklyGoal({
-            id: weeklyGoal.id,
-            weekId: weeklyGoal.weekId,
-            aim: weeklyGoal.aim,
-            summary: weeklyGoal.summary,
-            state: weeklyGoal.state,
-            uid: weeklyGoal.uid,
-            create_time: weeklyGoal.create_time
-          })
-        ])
+        if (weeklyGoal.state != 2) {
+          weeklyGoals = weeklyGoals.concat([
+            new WeeklyGoal({
+              id: weeklyGoal.id,
+              weekId: weeklyGoal.weekId,
+              aim: weeklyGoal.aim,
+              summary: weeklyGoal.summary,
+              state: weeklyGoal.state,
+              uid: weeklyGoal.uid,
+              create_time: weeklyGoal.create_time
+            })
+          ])
+        }
       } 
       console.log(weeklyGoals)
       _this.setData({
@@ -150,13 +152,13 @@ Page({
   /**
      * Weekly 长按事件
      */
-  weeklyLongTap(id) {
+  weeklyLongTap(e) {
     let _this = this;
-    let index = e.currentTarget.dataset.index;
-    id = e.currentTarget.dataset.id;
-    
-    id = e.id;
-    
+    let id = e.currentTarget.dataset.id;
+    let data = {
+      'id': id
+    }
+
     wx.showModal({
       title: '提示',
       content: '确定要删除该目标么？',
@@ -164,8 +166,18 @@ Page({
         
         if (e.confirm) {
           // _this.data.thisWeekGoalList.splice(index, 1)
-          WXAPI.deleteWeeklyGoal().then(function (res){
-
+          WXAPI.deleteWeeklyGoal(data).then(function (res){
+            if (res.code != 200) {
+              wx.showModal({
+                title: '错误',
+                content: res.msg,
+                showCancel: false
+              })
+              return;
+            } else {
+              wx.showToast({ title: '删除成功' });
+              _this.onShow();
+            }
           })
 
         }

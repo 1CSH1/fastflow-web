@@ -59,7 +59,7 @@ module.exports = {
     return request("/updateWeeklyGoal", false, 'get', data)
   },
   deleteWeeklyGoal: (data) => {
-    return request("deleteWeeklyGoal", false, 'get', data)
+    return request("/deleteWeeklyGoal", false, 'get', data)
   },
   login: (code) => {
     return request('/user/wxapp/login', true, 'post', {
