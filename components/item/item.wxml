@@ -1,24 +1,13 @@
 <!--components/item.wxml-->
-<view
-  class="todo-item">
-  <view class="todo-item__col1">
-    <!-- <todo-checkbox
-      class="todo-item__checkbox"
-      checked="{{ todo.completed }}"
-      bindchange="handleCompletedChange">
-    </todo-checkbox> -->
-  </view>
+<view class="todo-item {{ todo.state == 1 ? 'todo-item--completed' : '' }}">
+  <view class='todo-item__col1'></view>
   <view class="todo-item__col2">
-    <input
-      class="todo-item__title"
-      value="{{ todo.title }}"
-      placeholder="准备做什么？"
-      bindinput="handleTitleChange"
-      auto-focus="{{ autoFocus }}">
-    </input>
+    <view class="todo-item__title">
+    {{ todo.aim }}
+    </view>
   </view>
   <view class="todo-item__col3" bindtap="handleDateClick">
-    <!-- <text class="todo-item__date">{{ todo.date }}</text> -->
-    <picker class="todo-item__date" mode="date" bindchange="handleDateChange">{{ todo.date }}</picker>
+    <view class="todo-item-state-completed" wx:if="{{todo.state == 1}}">已完成</view>
+    <view class="todo-item-state-uncompleted" wx:else>未完成</view>
   </view>
 </view>

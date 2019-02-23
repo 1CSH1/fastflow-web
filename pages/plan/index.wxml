@@ -15,7 +15,7 @@
     <view
       wx:for="{{ thisWeekGoalList }}"
       wx:key="{{ index }}"
-      wx:if="{{ item.state == 0 }}"
+      wx:if="{{ item.state != 2}}"
       class="todo-list__item ripple fast fadeInRight"
       style="animation-delay: {{ delay ? index * 0.1 : 0 }}s">
       <item
@@ -23,7 +23,7 @@
         todo="{{ item }}"
         data-index="{{ index }}"
         bindchange="handleTodoItemChange"
-        bindlongtap="handleTodoLongTap">
+        bindlongtap="weeklyLongTap">
       </item>
     </view>
     <!-- <view class="ripple bounceIn" wx:if="{{!uncompletedCount}}">
@@ -39,7 +39,7 @@
     </view>
     <view
       wx:for="{{ todos }}"
-      wx:key="{{ index }}"
+      wx:key="{{ item.id }}"
       wx:if="{{ item.completed }}"
       class="todo-list__item ripple fast fadeInRight"
       style="animation-delay: {{ delay ? index * 0.1 : 0 }}s">
@@ -47,6 +47,7 @@
         class="todo-item"
         todo="{{ item }}"
         data-index="{{ index }}"
+        data-id="{{ item.id }}"
         bindchange="handleTodoItemChange"
         bindlongtap="handleTodoLongTap">
       </todo-item>
