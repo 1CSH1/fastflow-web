@@ -2,7 +2,9 @@
   "pages": [
     "pages/plan/index",
     "pages/past/index",
-    "pages/me/index"
+    "pages/me/index",
+    "pages/plan/weekly/create",
+    "pages/plan/weekly/modify"
   ],
   "window": {
     "backgroundTextStyle": "light",

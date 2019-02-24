@@ -150,9 +150,23 @@ Page({
   },
 
   /**
+   * 开始按事件
+   */
+  bindTouchStart: function (e) {
+    this.startTime = e.timeStamp;
+  },
+
+  /**
+   * 结束按事件
+   */
+  bindTouchEnd: function (e) {
+    this.endTime = e.timeStamp;
+  },
+
+  /**
      * Weekly 长按事件
      */
-  weeklyLongTap(e) {
+  weeklyLongTap: function(e) {
     let _this = this;
     let id = e.currentTarget.dataset.id;
     let data = {
@@ -184,4 +198,40 @@ Page({
       }
     })
   },
+
+  /**
+   * 修改时间
+   */
+  weeklyTap: function(e) {
+    if (this.endTime - this.startTime > 350) {
+      return ;
+    }
+    let _this = this;
+    let urlParams = "aim=" + e.currentTarget.dataset.aim
+    + "&summary=" + e.currentTarget.dataset.summary
+    + "&state=" + e.currentTarget.dataset.state
+    + "&id=" + e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../plan/weekly/modify?' + urlParams
+    })
+  },
+
+  /**
+  * 新增事件
+  */
+  handleAddTodo: function(e) {
+    wx.showActionSheet({
+      itemList: ['新建周目标', '新建日任务'],
+      success: function(res) {
+        console.log(res.tapIndex);
+        wx.navigateTo({
+          url: '../plan/weekly/create'
+        })
+      },
+      fail: function(res) {
+        console.log(res.errMsg);
+      }
+    })
+    
+  }
 })
