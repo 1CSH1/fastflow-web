@@ -61,6 +61,18 @@ module.exports = {
   deleteWeeklyGoal: (data) => {
     return request("/deleteWeeklyGoal", false, 'get', data)
   },
+  queryDailyTask: (data) => {
+    return request("/queryDailyTask", false, 'get', data)
+  },
+  addDailyTask: (data) => {
+    return request("/addDailyTask", false, 'get', data)
+  },
+  updateDailyTask: (data) => {
+    return request("/updateDailyTask", false, 'get', data)
+  },
+  deleteDailyTask: (data) => {
+    return request("/deleteDailyTask", false, 'get', data)
+  },
   login: (code) => {
     return request('/user/wxapp/login', true, 'post', {
       code,
