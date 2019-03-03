@@ -1,6 +1,6 @@
 // pages/plan/index.js
 import WeeklyGoal from '../../models/WeeklyGoal.js'
-
+import DailyTask from '../../models/DailyTask.js'
 const WXAPI = require('../../utils/request')
 
 Page({
@@ -97,11 +97,50 @@ Page({
     });
 
     // TODO 获取本日任务
-    _this.setData({
-      thisDayTaskTitle: "本日无任务",
-      thisDayTaskList: [
-      ]
-    })
+    WXAPI.queryDailyTask().then(function (res) {
+      if (res.code != 200) {
+        wx.showModal({
+          title: '错误',
+          content: res.msg,
+          showCancel: false
+        })
+        return;
+      }
+      if (res.data == null || res.data.length == 0) {
+        _this.setData({
+          thisDailyTaskTitle: "本日无任务"
+        })
+        return;
+      }
+
+      let dailyTasks = [];
+
+      let jsonData = JSON.parse(res.data);
+      console.log(jsonData);
+
+      for (let i = 0; i < jsonData.length; i++) {
+        let dailyTask = jsonData[i];
+        if (dailyTask.state != 2) {
+          dailyTasks = dailyTasks.concat([
+            new DailyTask({
+              id: dailyTask.id,
+              weekId: dailyTask.weekId,
+              aim: dailyTask.aim,
+              summary: dailyTask.summary,
+              state: dailyTask.state,
+              uid: dailyTask.uid,
+              create_time: dailyTask.create_time
+            })
+          ])
+        }
+      }
+      console.log(dailyGoals)
+      _this.setData({
+        thisDailyTaskTitle: "本日 " + dailyTasks.length + " 任务",
+        thisDailyTaskList: dailyTasks
+      })
+
+    });
   },
 
   /**
@@ -224,9 +263,17 @@ Page({
       itemList: ['新建周目标', '新建日任务'],
       success: function(res) {
         console.log(res.tapIndex);
-        wx.navigateTo({
-          url: '../plan/weekly/create'
-        })
+        if (res.tapIndex == 0){
+          wx.navigateTo({
+            url: '../plan/weekly/create'
+          })
+        }
+        else{
+          wx.navigateTo({
+            url: '../plan/daily/create'
+          })
+        }
+
       },
       fail: function(res) {
         console.log(res.errMsg);
