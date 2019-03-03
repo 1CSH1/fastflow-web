@@ -1,0 +1,9 @@
+/* pages/plan/weekly/modify.wxss */
+.create-header {
+  padding: 0;
+  border-bottom: 0;
+}
+
+.radio-right {
+  padding-left: 10rpx
+}
